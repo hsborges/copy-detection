@@ -10,7 +10,7 @@
   "scripts": {
     "commit": "cz",
     "start": "node index.js",
-    "release": "dotenv release-it"
+    "release": "dotenv release-it --dry-run"
   },
   "bin": {
     "copy-detection": "index.js"
