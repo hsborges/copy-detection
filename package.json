@@ -1,11 +1,13 @@
 {
   "name": "copy-detection",
   "description": "A simple application to detect copy between students submissions",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "commit": "cz",
+    "start": "node index.js",
+    "semantic-release": "npx -n '-r dotenv/config' semantic-release"
   },
   "bin": {
     "copy-detection": "./index.js"
@@ -21,11 +23,29 @@
     "tmp-promise": "^3.0.2"
   },
   "devDependencies": {
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "3.3.0",
+    "dotenv": "^8.2.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-standard": "^4.0.1",
     "prettier": "^2.1.2",
     "prettier-config-standard": "^1.0.1",
+    "semantic-release": "^17.1.2",
     "standard": "^14.3.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hsborges/copy-detection.git"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
