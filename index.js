@@ -14,8 +14,9 @@ const { withDir, dirSync } = require('tmp-promise')
 program
   .arguments('<directory>')
   .requiredOption('-s, --suffixes <suffixes...>', 'List of all filename suffixes')
-  .option('-l, --language <language>', 'JPlag supported language', 'text')
-  .option('-o, --output-dir <directory>', 'Output directory')
+  .option('--language <language>', 'JPlag - Supported language', 'text')
+  .option('--no-subdirs', 'JPlag - Dont look at files in subdirs')
+  .option('--output-dir <directory>', 'JPlag - Output directory')
   .action(directory =>
     withDir(
       meta =>
@@ -50,11 +51,16 @@ program
                   const jplagFile = path.resolve(__dirname, 'lib', 'jplag.jar')
                   const jplagOptions = Object.entries({
                     p: program.suffixes.join(','),
+                    s: program.subdirs,
                     l: program.language,
                     r: outputDir
-                  }).reduce((r, [k, v]) => `-${k} ${v} ${r}`, '')
+                  }).reduce((r, [k, v]) => {
+                    if (v === false) return r
+                    else if (v === true) return `-${k} ${r}`
+                    return `-${k} ${v} ${r}`
+                  }, '')
 
-                  exec(`java -jar ${jplagFile} -s ${jplagOptions} ${meta.path}`, async err => {
+                  exec(`java -jar ${jplagFile} ${jplagOptions} ${meta.path}`, async err => {
                     if (err) {
                       reject(err)
                     } else {
