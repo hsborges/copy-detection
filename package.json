@@ -1,9 +1,10 @@
 {
-  "name": "copy-detection",
+  "name": "@hsborges/copy-detection",
   "description": "A simple application to detect copy between students submissions",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "private": false,
   "scripts": {
     "commit": "cz",
     "start": "node index.js",
@@ -41,7 +42,9 @@
   "release": {
     "branches": [
       "main"
-    ]
+    ],
+    "ci": false,
+    "dryRun": false
   },
   "config": {
     "commitizen": {
