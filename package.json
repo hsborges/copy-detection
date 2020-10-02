@@ -1,17 +1,18 @@
 {
   "name": "@hsborges/copy-detection",
   "description": "A simple application to detect copy between students submissions",
-  "version": "1.0.0",
+  "homepage": "https://github.com/hsborges/copy-detection#readme",
+  "author": "Hudson Silva Borges",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
   "private": false,
   "scripts": {
     "commit": "cz",
-    "start": "node index.js",
-    "semantic-release": "npx -n '-r dotenv/config' semantic-release"
+    "start": "node index.js"
   },
   "bin": {
-    "copy-detection": "./index.js"
+    "copy-detection": "index.js"
   },
   "dependencies": {
     "commander": "^6.1.0",
@@ -36,18 +37,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hsborges/copy-detection.git"
-  },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "ci": false,
-    "dryRun": false
+    "url": "git+https://github.com/hsborges/copy-detection.git"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "bugs": {
+    "url": "https://github.com/hsborges/copy-detection/issues"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }
