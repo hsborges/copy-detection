@@ -3,7 +3,7 @@
   "description": "A simple application to detect copy between students submissions",
   "homepage": "https://github.com/hsborges/copy-detection#readme",
   "author": "Hudson Silva Borges",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "main": "index.js",
   "license": "MIT",
   "private": false,
