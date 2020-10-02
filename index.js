@@ -7,7 +7,6 @@ const unrar = require('node-unrar-js')
 const copy = require('recursive-copy')
 const decompress = require('decompress')
 
-const { reduce } = require('lodash')
 const { program } = require('commander')
 const { exec } = require('child_process')
 const { withDir, dirSync } = require('tmp-promise')
@@ -49,15 +48,11 @@ program
                   consola.info('Running jplag tool ...')
                   const outputDir = program.outputDir || dirSync().name
                   const jplagFile = path.resolve(__dirname, 'lib', 'jplag.jar')
-                  const jplagOptions = reduce(
-                    {
-                      p: program.suffixes.join(','),
-                      l: program.language,
-                      r: outputDir
-                    },
-                    (r, v, k) => `-${k} ${v} ${r}`,
-                    ''
-                  )
+                  const jplagOptions = Object.entries({
+                    p: program.suffixes.join(','),
+                    l: program.language,
+                    r: outputDir
+                  }).reduce((r, [k, v]) => `-${k} ${v} ${r}`, '')
 
                   exec(`java -jar ${jplagFile} -s ${jplagOptions} ${meta.path}`, async err => {
                     if (err) {
