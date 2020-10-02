@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const path = require('path')
 const glob = require('glob')
 const open = require('open')
@@ -47,7 +48,7 @@ program
 
                   consola.info('Running jplag tool ...')
                   const outputDir = program.outputDir || dirSync().name
-
+                  const jplagFile = path.resolve(__dirname, 'lib', 'jplag.jar')
                   const jplagOptions = reduce(
                     {
                       p: program.suffixes.join(','),
@@ -58,7 +59,7 @@ program
                     ''
                   )
 
-                  exec(`java -jar lib/jplag.jar -s ${jplagOptions} ${meta.path}`, async err => {
+                  exec(`java -jar ${jplagFile} -s ${jplagOptions} ${meta.path}`, async err => {
                     if (err) {
                       reject(err)
                     } else {

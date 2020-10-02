@@ -7,6 +7,9 @@
   "scripts": {
     "start": "node index.js"
   },
+  "bin": {
+    "copy-detection": "./index.js"
+  },
   "dependencies": {
     "commander": "^6.1.0",
     "consola": "^2.15.0",
